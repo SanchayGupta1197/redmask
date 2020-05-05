@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * This masking function convert a column of type numeric into a range of numeric,
+ * This masking function converts a column of type numeric into a range of numeric,
  * with the range equal to the step parameter.
  */
 public class NumericRangeMasking extends MaskingRuleDef {

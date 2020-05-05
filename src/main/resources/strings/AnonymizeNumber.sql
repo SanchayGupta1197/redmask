@@ -14,3 +14,19 @@ BEGIN
 END;
 $$
 LANGUAGE plpgsql VOLATILE SECURITY INVOKER;
+
+
+CREATE or replace function sql_replace(colname text,pattern character,prefix integer,suffix integer)
+returns text AS $$
+DECLARE strlength integer default 0;
+BEGIN
+     strlength = length($1);
+     IF $3>0 then
+          return substr($1,1,$3 )
+          ||regexp_replace(substr($1,$3+1,(strlength-$3-$4)),'[0-9]',$2)
+          ||substr($1,(strlength-$4+1),$4 );
+     END IF;
+     return regexp_replace(substr($1,$3+1,(strlength-$3-$4)),'[0-9]',$2)
+     ||substr($1,(strlength-$4+1),$4 );
+END;
+$$ language SQL VOLATILE;
