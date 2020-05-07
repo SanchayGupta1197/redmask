@@ -21,6 +21,9 @@ repositories {
     maven {
         url = 'https://repo.maven.apache.org/maven2'
     }
+    maven {
+        url = 'http://redshift-maven-repository.s3-website-us-east-1.amazonaws.com/release'
+    }
 }
 
 dependencies {
@@ -35,6 +38,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.testcontainers:postgresql:1.13.0'
     compileOnly 'org.graalvm.nativeimage:svm:19.3.1'
+    compile group: 'com.amazon.redshift', name: 'redshift-jdbc42', version: '1.2.16.1027'
 }
 
 group = 'com.hashedin'
